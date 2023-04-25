@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random Quote Generator By Ashutosh Mishra</title>
+  </head>
+  <body>
+    <h1>Random Quote Generator By Ashutosh Mishra</h1>
+    <p id="quote"></p>
+    <p id="author"></p>
+    <button onclick="getQuote()">New Quote</button>
+
+    <script>
+      function getQuote() {
+        fetch('https://api.quotable.io/random')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('quote').textContent = data.content;
+            document.getElementById('author').textContent = `- ${data.author}`;
+          })
+          .catch(error => console.log(error));
+      }
+    </script>
+  </body>
+</html>
